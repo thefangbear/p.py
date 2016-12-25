@@ -1,3 +1,4 @@
+#!/usr/bin/env python2
 from multiprocessing import Process
 import thread
 import time
