@@ -2,6 +2,10 @@ from multiprocessing import Process
 import thread
 import time
 
+"""
+Script inspired by Kevin Lu's analysis of Python GC.
+"""
+
 class ClassA():
     def __init__(self):
         print 'object born, id:%s'%str(hex(id(self)))
