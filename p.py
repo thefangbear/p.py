@@ -20,10 +20,16 @@ def do_evil():
         c3 = ClassA()
         c4 = ClassA()
         c5 = ClassA()
+        c6 = ClassA()
+        c7 = ClassA()
+        c8 = ClassA()
         c1.t = c2
         c1.t2 = c3
         c1.t3 = c4
         c1.t4 = c5
+        c1.t5 = c6
+        c1.t6 = c7
+        c1.t8 = c8
         c2.t = c1
         c2.t2 = c3
         c2.t3 = c4
@@ -47,18 +53,26 @@ def do_evil():
         del c5
 
 
-def multi_evil():
+def midd_stager():
     while True:
         try:
             thread.start_new_thread(do_evil)
         except:
-            do_evil()  # do directly
+            do_evil()
+
+def multi_evil():
+    while True:
+        try:
+            thread.start_new_thread(midd_stager)
+        except:
+            midd_stager()  # do directly
 
 
 
 def fork_evil():
     p = Process(target=multi_evil)
     p.start()
+
 
 def main():
     while True:
